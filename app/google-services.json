@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "326389231799",
+    "firebase_url": "https://sqdam-bot.firebaseio.com",
+    "project_id": "sqdam-bot",
+    "storage_bucket": "sqdam-bot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326389231799:android:5242ffc03c7431a46a9d32",
+        "android_client_info": {
+          "package_name": "com.example.capstone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326389231799-700s0bj7emj1np3tcmt435t5jpp04v33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhxk7WxOHtg-Wo5_BLQnNrWQiL50nN52o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326389231799-700s0bj7emj1np3tcmt435t5jpp04v33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

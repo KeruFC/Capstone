@@ -6,6 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
@@ -15,6 +19,16 @@ import java.util.*
 class homeFragment : Fragment() {
 
     private lateinit var countDownTimer: CountDownTimer
+    private lateinit var database: DatabaseReference
+    private var announcementListener: ValueEventListener? = null
+
+    private val announcements = arrayListOf<Announcements>()
+    private val announcementsAdapter = AnnouncementAdapter(announcements)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        database = FirebaseDatabase.getInstance().reference.child("announcements")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,15 +40,43 @@ class homeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        rvAnnouncements.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        rvAnnouncements.adapter = announcementsAdapter
+        rvAnnouncements.addItemDecoration(
+            DividerItemDecoration(
+                activity,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        getAnnouncements()
+
         timerStart()
-//        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-//        }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         countDownTimer.cancel()
+    }
+
+    private fun getAnnouncements(){
+        this.announcementListener = null
+        val announcementListener = object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var id = 0
+                for(ds: DataSnapshot in snapshot.children){
+                    val announcement = Announcements(ds.value.toString())
+                    announcements.add(announcement)
+                    id += 1
+                }
+                announcementsAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        }
+        database.addValueEventListener(announcementListener)
+        this.announcementListener = announcementListener
     }
 
     private fun timerStart(){
