@@ -7,6 +7,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <color name="background">#303136</color>
+    <color name="card_background">#42474D</color>
 
 
     <string name="hello_first_fragment">Hello first fragment</string>
