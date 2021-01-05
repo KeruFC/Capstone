@@ -11,7 +11,24 @@
     <color name="text_on_card_color">#9A9B9D</color>
 
 
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="aantal_punten">Aantal punten: %s</string>
+    <string name="aantal_cases">Aantal cases:</string>
+    <string name="inv_waarde">Inv waarde:</string>
+    <string name="geld">Geld:</string>
+    <string name="laatste_0000">Laatste 0000:</string>
+    <string name="_0000_streak">0000 streak:</string>
+    <string name="gebruikers_statistieken">Gebruikers statistieken</string>
+    <string name="username">Username</string>
+    <string name="invalid_id">invalid ID</string>
 </resources>

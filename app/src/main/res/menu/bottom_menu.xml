@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_home" />
     <item
         android:id="@+id/leaderboardFragment"
-        android:title="Search"
+        android:title="Leaderboard"
         android:icon="@drawable/ic_group" />
     <item
         android:id="@+id/ArtOverviewFragment"
@@ -14,7 +14,7 @@
         android:icon="@drawable/ic_console"
         android:iconTint="@color/white"/>
     <item
-        android:id="@+id/EventFragment"
-        android:title="Events"
+        android:id="@+id/loginFragment"
+        android:title="Statistics"
         android:icon="@drawable/ic_profile_user" />
 </menu>

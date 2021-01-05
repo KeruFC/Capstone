@@ -1,18 +1,16 @@
 package com.example.capstone
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.Nullable
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,8 +49,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadScreen() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                in arrayOf(R.id.homeFragment) -> {
-
+                in arrayOf(R.id.loginFragment) -> {
                 }
                 in arrayOf(R.id.leaderboardFragment) -> {
                 }
