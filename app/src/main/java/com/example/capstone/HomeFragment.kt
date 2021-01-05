@@ -16,7 +16,7 @@ import java.util.*
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class homeFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     private lateinit var countDownTimer: CountDownTimer
     private lateinit var database: DatabaseReference
@@ -40,6 +40,14 @@ class homeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initRv()
+        getAnnouncements()
+        timerStart()
+
+    }
+
+    private fun initRv() {
         rvAnnouncements.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         rvAnnouncements.adapter = announcementsAdapter
         rvAnnouncements.addItemDecoration(
@@ -48,10 +56,6 @@ class homeFragment : Fragment() {
                 DividerItemDecoration.VERTICAL
             )
         )
-        getAnnouncements()
-
-        timerStart()
-
     }
 
     override fun onDestroyView() {
