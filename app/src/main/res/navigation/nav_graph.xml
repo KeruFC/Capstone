@@ -21,4 +21,8 @@
         android:name="com.example.capstone.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login"/>
+    <fragment
+        android:id="@+id/gamesFragment"
+        android:name="com.example.capstone.GamesFragment"
+        android:label="GamesFragment" />
 </navigation>

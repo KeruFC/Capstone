@@ -50,12 +50,12 @@ class HomeFragment : Fragment() {
     private fun initRv() {
         rvAnnouncements.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         rvAnnouncements.adapter = announcementsAdapter
-        rvAnnouncements.addItemDecoration(
-            DividerItemDecoration(
-                activity,
-                DividerItemDecoration.VERTICAL
-            )
-        )
+//        rvAnnouncements.addItemDecoration(
+//            DividerItemDecoration(
+//                activity,
+//                DividerItemDecoration.VERTICAL
+//            )
+//        )
     }
 
     override fun onDestroyView() {

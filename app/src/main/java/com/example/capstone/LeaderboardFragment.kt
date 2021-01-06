@@ -48,12 +48,12 @@ class LeaderboardFragment : Fragment() {
     private fun initRv() {
         rvLeaderboard.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         rvLeaderboard.adapter = leaderboardAdapter
-        rvLeaderboard.addItemDecoration(
-                DividerItemDecoration(
-                        activity,
-                        DividerItemDecoration.VERTICAL
-                )
-        )
+//        rvLeaderboard.addItemDecoration(
+//                DividerItemDecoration(
+//                        activity,
+//                        DividerItemDecoration.VERTICAL
+//                )
+//        )
     }
 
     private fun getLeaderboard(){

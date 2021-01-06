@@ -31,4 +31,5 @@
     <string name="gebruikers_statistieken">Gebruikers statistieken</string>
     <string name="username">Username</string>
     <string name="invalid_id">invalid ID</string>
+    <string name="notification_channel_description">Test</string>
 </resources>

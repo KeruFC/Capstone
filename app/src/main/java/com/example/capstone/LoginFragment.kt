@@ -45,11 +45,11 @@ class LoginFragment : Fragment() {
 
                 @SuppressLint("SetTextI18n")
                 override fun onDataChange(snapshot: DataSnapshot) {
+
                     for (i in snapshot.children){
                         val hasData = i.child(discordId).child("cash").value.toString()
+
                         if(hasData != "null") {
-//                            i.child("users").child(discordId.toString())
-//                                .child("username").value.toString()
                             tvDiscordname.text =
                                 i.child(discordId).child("username").value.toString()
                             tvPunten.text = "Aantal punten: " + i.child(discordId)
