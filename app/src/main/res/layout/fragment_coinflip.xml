@@ -15,7 +15,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:text="Coinflip"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -36,9 +36,11 @@
 
         <ImageView
             android:id="@+id/ivCoinflip"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="100dp"
+            android:scaleX="2"
+            android:scaleY="2"
             tools:srcCompat="@tools:sample/avatars" />
     </androidx.cardview.widget.CardView>
 
@@ -64,8 +66,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Coinflip"
+        android:layout_marginTop="16dp"
+        android:text="Hoe het werkt"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -77,12 +79,36 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vul hierboven in hoeveel euro jij wilt in zetten in de coinflip. Swipe de afbeelding naar rechts om op kop te stemmen. Swipe de afbeelding naar links om op munt te stemmen. Veel geluk en splezier!"
+        android:text="Vul hierboven in hoeveel euro jij wilt in zetten in de coinflip. Klik op K voor kop en M voor munt. Veel geluk en splezier!"
         android:textColor="@color/text_on_card_color"
         android:textSize="14sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:backgroundTint="@color/card_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/ic_k" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabTail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:backgroundTint="@color/card_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fabHead"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/ic_m" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

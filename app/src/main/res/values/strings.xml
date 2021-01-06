@@ -32,4 +32,7 @@
     <string name="username">Username</string>
     <string name="invalid_id">invalid ID</string>
     <string name="notification_channel_description">Test</string>
+    <string name="win">Win!</string>
+    <string name="lose">Lose!</string>
+    <string name="empty_bet">Vul in hoeveel geld je wilt gokken!</string>
 </resources>

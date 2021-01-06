@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_leaderboard.*
 class GamesFragment : Fragment() {
 
     private val games = arrayListOf<Games>()
-    private val gamesAdapter = GamesAdapter(games) { game : Games -> gameOpened(game)}
+    private val gamesAdapter = GamesAdapter(games) { game : Games -> gameOpened()}
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -49,8 +49,7 @@ class GamesFragment : Fragment() {
         gamesAdapter.notifyDataSetChanged()
     }
 
-    private fun gameOpened(game: Games) {
-        val toast = Toast.makeText(context, "clicked!", Toast.LENGTH_LONG)
-        toast.show()
+    private fun gameOpened() {
+        findNavController().navigate(R.id.action_gamesFragment_to_coinflipFragment)
     }
 }

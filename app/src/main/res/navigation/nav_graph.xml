@@ -24,5 +24,13 @@
     <fragment
         android:id="@+id/gamesFragment"
         android:name="com.example.capstone.GamesFragment"
-        android:label="GamesFragment" />
+        android:label="GamesFragment" >
+        <action
+            android:id="@+id/action_gamesFragment_to_coinflipFragment"
+            app:destination="@id/coinflipFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coinflipFragment"
+        android:name="com.example.capstone.CoinflipFragment"
+        android:label="CoinflipFragment" />
 </navigation>
