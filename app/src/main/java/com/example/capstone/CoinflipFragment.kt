@@ -26,7 +26,6 @@ private const val TAILS = 1
 
 class CoinflipFragment : Fragment() {
 
-    private var isFlipping: Int = 0
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?

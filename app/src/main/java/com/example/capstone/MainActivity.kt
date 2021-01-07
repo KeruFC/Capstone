@@ -20,7 +20,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var notificationManager: NotificationManager
-    private val CHANNEL_ID = "channel_id_example_01"
+    private val channelId = "channel_id_example_01"
     private val notificationId = 101
 
     private lateinit var navController: NavController
@@ -60,10 +60,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val name = "Notification Title"
-            val descriptionText = "Notification Description"
+            val name = getString(R.string.notification_title)
+            val descriptionText = getString(R.string.notification_description)
             val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+            val channel = NotificationChannel(channelId, name, importance).apply {
                 description = descriptionText
             }
             val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendNotification() {
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        val builder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle(getString(R.string.notification_title))
             .setContentText(getString(R.string.notification_description))

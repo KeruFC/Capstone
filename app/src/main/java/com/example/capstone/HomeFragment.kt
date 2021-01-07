@@ -98,7 +98,7 @@ class HomeFragment : Fragment() {
 
         countDownTimer = object : CountDownTimer(difference.toLong(), 1000) {
             override fun onFinish() {
-                tvTimeRemaining.text = "Het is tijd!"
+                tvTimeRemaining.text = getString(R.string.time_end)
             }
 
             override fun onTick(millisUntilFinished: Long) {
@@ -114,8 +114,7 @@ class HomeFragment : Fragment() {
                 diff %= minutesInMilli
 
                 val elapsedSeconds = diff / secondsInMilli
-                tvTimeRemaining.text =
-                    "$elapsedHours:$elapsedMinutes:$elapsedSeconds"
+                tvTimeRemaining.text = getString(R.string.time_remaining, elapsedHours, elapsedMinutes, elapsedSeconds)
 
             }
         }.start()
