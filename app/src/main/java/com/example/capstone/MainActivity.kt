@@ -74,8 +74,8 @@ class MainActivity : AppCompatActivity() {
     private fun sendNotification() {
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Het is bijna tijd.")
-            .setContentText("Nog 1 minuut voor 00:00!")
+            .setContentTitle(getString(R.string.notification_title))
+            .setContentText(getString(R.string.notification_description))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(this)) {

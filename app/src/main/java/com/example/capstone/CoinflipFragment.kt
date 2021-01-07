@@ -1,5 +1,6 @@
 package com.example.capstone
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_coinflip.*
 import kotlin.random.Random
@@ -40,103 +42,10 @@ class CoinflipFragment : Fragment() {
             .into(ivCoinflip)
 
         fabHead.setOnClickListener {
-                val amount = etBet.text.toString()
-                if (amount.isNotEmpty()) {
-                    fabHead.hide()
-                    fabTail.hide()
-
-                    if (coinflip(HEADS)) {
-                        Glide.with(context)
-                            .load(HEADS_LOGO)
-                            .into(ivCoinflip)
-
-                        val handler = Handler()
-                        handler.postDelayed(Runnable {
-                            val toast =
-                                Toast.makeText(context, getString(R.string.win), Toast.LENGTH_LONG)
-                            toast.show()
-                        }, 7000)
-
-                        handler.postDelayed(Runnable {
-                            Glide.with(context)
-                                .load(STILL_LOGO)
-                                .into(ivCoinflip)
-                            fabHead.show()
-                            fabTail.show()
-                        }, 8000)
-
-
-                    } else {
-                        Glide.with(context)
-                            .load(TAILS_LOGO)
-                            .into(ivCoinflip)
-                        val handler = Handler()
-                        handler.postDelayed(Runnable {
-                            val toast =
-                                Toast.makeText(context, getString(R.string.lose), Toast.LENGTH_LONG)
-                            toast.show()
-                        }, 7000)
-
-                        handler.postDelayed(Runnable {
-                            Glide.with(context)
-                                .load(STILL_LOGO)
-                                .into(ivCoinflip)
-                            fabHead.show()
-                            fabTail.show()
-                        }, 8000)
-                    }
-                } else {
-                    Snackbar.make(view, getString(R.string.empty_bet), Snackbar.LENGTH_SHORT).show()
-                }
+            showResult(view, HEADS, coinflip(HEADS))
         }
         fabTail.setOnClickListener {
-            val amount = etBet.text.toString()
-            if(amount.isNotEmpty()) {
-                fabHead.hide()
-                fabTail.hide()
-                if (coinflip(TAILS)) {
-                    Glide.with(context)
-                        .load(TAILS_LOGO)
-                        .into(ivCoinflip)
-
-                    val handler = Handler()
-                    handler.postDelayed(Runnable {
-                        val toast =
-                            Toast.makeText(context, getString(R.string.win), Toast.LENGTH_LONG)
-                        toast.show()
-                    }, 7000)
-
-                    handler.postDelayed(Runnable {
-                        Glide.with(context)
-                            .load(STILL_LOGO)
-                            .into(ivCoinflip)
-                        fabHead.show()
-                        fabTail.show()
-                    }, 8000)
-
-                } else {
-                    Glide.with(context)
-                        .load(HEADS_LOGO)
-                        .into(ivCoinflip)
-
-                    val handler = Handler()
-                    handler.postDelayed(Runnable {
-                        val toast =
-                            Toast.makeText(context, getString(R.string.win), Toast.LENGTH_LONG)
-                        toast.show()
-                    }, 7000)
-
-                    handler.postDelayed(Runnable {
-                        Glide.with(context)
-                            .load(STILL_LOGO)
-                            .into(ivCoinflip)
-                        fabHead.show()
-                        fabTail.show()
-                    }, 8000)
-                }
-            } else {
-                Snackbar.make(view, getString(R.string.empty_bet), Snackbar.LENGTH_SHORT).show()
-            }
+            showResult(view, TAILS, coinflip(TAILS))
         }
     }
 
@@ -146,6 +55,77 @@ class CoinflipFragment : Fragment() {
 
         return coinflipped == chosenSide
 
+    }
+
+    private fun showResult(view: View, chosenSide: Int, hasWon: Boolean) {
+        val amount = etBet.text.toString()
+        val title: String
+        val message: String
+
+        if (amount.isNotEmpty()) {
+
+            val logo: String = if(chosenSide == HEADS){
+                HEADS_LOGO
+            } else {
+                TAILS_LOGO
+            }
+
+            fabHead.hide()
+            fabTail.hide()
+
+            if (hasWon) {
+                title = getString(R.string.win)
+                message = getString(R.string.win_message, amount.toInt()*2)
+
+                Glide.with(context)
+                        .load(logo)
+                        .into(ivCoinflip)
+
+                val handler = Handler()
+                handler.postDelayed(Runnable {
+                    context?.let { it1 -> MaterialAlertDialogBuilder(it1, R.style.AlertDialogTheme)
+                            .setTitle(title)
+                            .setMessage(message)
+                            .setPositiveButton(getString(R.string.ok), null)
+                            .show() }
+                }, 7000)
+
+                handler.postDelayed(Runnable {
+                    Glide.with(context)
+                            .load(STILL_LOGO)
+                            .into(ivCoinflip)
+                    fabHead.show()
+                    fabTail.show()
+                }, 8000)
+
+
+            } else {
+                title = getString(R.string.lose)
+                message = getString(R.string.lose_message, amount.toInt())
+
+                Glide.with(context)
+                        .load(logo)
+                        .into(ivCoinflip)
+                val handler = Handler()
+                handler.postDelayed(Runnable {
+                    context?.let { it1 -> MaterialAlertDialogBuilder(it1, R.style.AlertDialogTheme)
+                            .setTitle(title)
+                            .setMessage(message)
+                            .setPositiveButton(getString(R.string.ok), null)
+                            .show() }
+                }, 7000)
+
+                handler.postDelayed(Runnable {
+                    Glide.with(context)
+                            .load(STILL_LOGO)
+                            .into(ivCoinflip)
+                    fabHead.show()
+                    fabTail.show()
+                }, 8000)
+            }
+        } else {
+            Snackbar.make(view, getString(R.string.empty_bet), Snackbar.LENGTH_SHORT).show()
+        }
     }
 
 }

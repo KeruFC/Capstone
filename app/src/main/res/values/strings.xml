@@ -32,7 +32,12 @@
     <string name="username">Username</string>
     <string name="invalid_id">invalid ID</string>
     <string name="notification_channel_description">Test</string>
-    <string name="win">Win!</string>
-    <string name="lose">Lose!</string>
+    <string name="win">Gefeliciteerd!</string>
+    <string name="lose">Jammer.</string>
     <string name="empty_bet">Vul in hoeveel geld je wilt gokken!</string>
+    <string name="win_message">Je hebt €%d gewonnen! Klik op OK om terug te gaan.</string>
+    <string name="lose_message">Je hebt €%d verloren. Klik op OK om terug te gaan.</string>
+    <string name="ok">OK</string>
+    <string name="notification_title">Het is bijna tijd.</string>
+    <string name="notification_description">Nog 1 minuut voor 00:00!</string>
 </resources>
